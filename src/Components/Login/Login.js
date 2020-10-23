@@ -27,7 +27,7 @@ const Login = ({ title, setIsLogin }) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      let response = await callAPI("https://capstone-chat-server.herokuapp.com/", {
+      let response = await callAPI("http://localhost:3030/", {
         ...formData,
       }, 'POST');
       if (response.status === 200) {

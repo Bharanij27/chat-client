@@ -11,7 +11,7 @@ const ChatFriends = ({ chatWithUser, cookies }) => {
       const fetchRequests = async () => {
         setIsLoading(true)
         let apiResult = await callAPI(
-          "https://capstone-chat-server.herokuapp.com/users/friends",
+          "http://localhost:3030/users/friends",
           {
             token: cookies.user.token,
           },

@@ -18,7 +18,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
     const fetchData = async () => {
       setIsLoading(true)
       let apiResult = await callAPI(
-        "https://capstone-chat-server.herokuapp.com/messages",
+        "http://localhost:3030/messages",
         { token: cookies.user.token, friend: user.name },
         "POST"
       );
@@ -30,7 +30,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
   }, []);
 
   useEffect(() => {
-    socket = io("https://capstone-chat-server.herokuapp.com/");
+    socket = io("http://localhost:3030/");
 
     socket.emit("join", {token: cookies.user.token, friend: user.name}, (error) => {
       if (error) {
