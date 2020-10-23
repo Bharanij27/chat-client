@@ -1,0 +1,32 @@
+.chat-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+    border-top: 2px solid #d3d3d3
+}
+
+.chat-footer input {
+    flex: 1 1;
+    outline-width: 0;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+.emoji-mart-scroll{
+    height: 200px !important;
+}
+
+.chat-footer form {
+    flex: 1 1;
+    display: flex;
+}
+
+.emoji-picker{
+    position: absolute;
+    top:100%
+}
+
+.emoji-mart-bar{
+    display: none !important;
+}

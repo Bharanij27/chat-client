@@ -1,0 +1,12 @@
+.user-list{
+    /* background-color: #747473; */
+    flex: 1 1;
+    min-height: 60vh;
+}
+
+.unread-mesg img {
+    position: absolute;
+    right: 5%;
+    height: 30px;
+    width: 30px;
+}

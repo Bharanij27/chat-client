@@ -1,0 +1,42 @@
+.message-box {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 40%;
+    max-width: 60%;
+    margin-bottom: 3px;
+    margin-right: auto;
+    margin-left: 0px;
+}
+.active-message {
+    background-color: tomato;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.message-box .dropdown-menu.show {
+    right: 0px !important;
+    left: auto !important;
+    background-color: #e6eae7 !important;
+    top: 5px !important;
+    transform: none !important;
+}
+
+.message-content {
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.message-time{
+    justify-content: flex-end;
+    display: flex;
+    font-size: small;
+    color: #ccc;
+}
+
+.message-box i.fa.fa-chevron-down {
+    position: absolute;
+    right: 0px;
+    color: #ccc;
+    top: -6px;
+}

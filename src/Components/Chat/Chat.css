@@ -1,0 +1,14 @@
+.card-chat-head{
+    background-color: tomato;
+    /* color: #fff !important; */
+}
+
+.border-yellow{
+    border: 1px solid tomato !important;
+    /* height: 60vh; */
+}
+#root{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}

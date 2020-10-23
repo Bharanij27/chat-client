@@ -1,0 +1,30 @@
+.chat_header {
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: tomato;
+    background-color: tomato;
+}
+
+.chat_headerInfo {
+    flex: 1 1;
+    padding-left: 20px;
+}
+
+.chat_headerInfo p {
+    color: grey;
+    margin: 0px;
+}
+
+.chat_headerInfo h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.active-user{
+    color: springgreen !important;
+}
+
+.inactive-user{
+    color: darkslategrey !important;
+}

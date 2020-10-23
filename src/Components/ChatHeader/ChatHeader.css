@@ -1,0 +1,26 @@
+.left-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.Logout{
+    float: right;
+}
+.left-side-head{
+    float: left;
+    display: inline-block;
+}
+
+.app-title{
+    font-size: 20px;
+    font-family: 'Lemonada', cursive;
+}
+.threedots:after {
+    content: "\2807";
+    color: black;
+    font-size: 30px;
+  }
+  
+.threedotref:hover{
+    color: transparent;
+}
