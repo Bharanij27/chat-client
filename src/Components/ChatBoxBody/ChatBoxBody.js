@@ -3,6 +3,7 @@ import "./ChatBoxBody.css";
 import Message from "../Message/Message";
 import ScrollToBottom from "react-scroll-to-bottom";
 const ChatBoxBody = ({ user, chatheight, messages =[], setMessages }) => {
+  console.log(messages);
   
   const deleteMessage = (index) => {
     let chatMessages = [...messages]

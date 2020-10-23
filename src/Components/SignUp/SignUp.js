@@ -18,6 +18,15 @@ const SignUp = ({ title, setIsLogin }) => {
       alert("Password Should be same");
       return;
     }
+    else if(formData.pass.length < 4){
+      alert('The password should be a minimum of 4 characters in length')
+    }
+    else if(formData.phnum.length < 10){
+      alert('Phone Number should be valid')
+    }
+    else if(formData.phnum.split('').every(number => number.charCodeAt(0) < 58 && number.charCodeAt(0) < 58)){
+      alert('Enter valid phone number')
+    }
     try {
       let response = await callAPI("https://capstone-chat-server.herokuapp.com/newUser", {
         ...formData,
