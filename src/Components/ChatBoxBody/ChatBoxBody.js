@@ -11,7 +11,6 @@ const ChatBoxBody = ({ user, chatheight, messages =[], setMessages }) => {
     setMessages(chatMessages);
   }
 
-  console.log('rinin');
   return (
     <ScrollToBottom className="chat_body" followButtonClassName="scroll-button">
     <div style={{ height: chatheight + "vh" }}>

@@ -14,10 +14,6 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
   const [status, setStatus] = useState('Offline');
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(()=>{
-    console.log(messages);
-  },[messages])
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)

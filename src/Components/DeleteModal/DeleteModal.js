@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
 const DeleteModal = ({ message, index, deleteMessage }) => {
-    console.log(message);
     const [show, setShow] = useState(true);
 
   const handleClose = () => {
