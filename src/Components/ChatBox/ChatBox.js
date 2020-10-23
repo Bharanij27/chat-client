@@ -44,6 +44,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
     })
 
     socket.on("recieved Message", ({ recMesg, sender, sendByMe }) => {
+      debugger
       if(sender === user.name || sendByMe) {
           setMessages([...recMesg]);
           console.log('recieved message', recMesg);
