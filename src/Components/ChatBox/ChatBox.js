@@ -5,12 +5,14 @@ import ChatBoxHeader from "../ChatBoxHeader/ChatBoxHeader";
 import "./ChatBox.css";
 import callAPI from "../../common/callAPI";
 import io from "socket.io-client";
+import Loading from "../Loading/Loading";
 
 var socket;
 const ChatBox = ({ user, setCurrentBody, cookies }) => {
   const [messages, setMessages] = useState([]);
   const [chatheight, setChatheight] = useState(60);
   const [status, setStatus] = useState('Offline');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(()=>{
     console.log(messages);
@@ -18,13 +20,14 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       let apiResult = await callAPI(
         "https://capstone-chat-server.herokuapp.com/messages",
         { token: cookies.user.token, friend: user.name },
         "POST"
       );
-      console.log(apiResult);
       setMessages(apiResult.messages);
+      setIsLoading(false)
     };
 
     fetchData();
@@ -65,6 +68,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
 
   return (
     <Fragment>
+      {isLoading && <Loading/>}
       <div className="chat">
         <ChatBoxHeader user={user} status={status} setCurrentBody={setCurrentBody} />
           <ChatBoxBody

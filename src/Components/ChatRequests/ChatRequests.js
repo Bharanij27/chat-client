@@ -2,12 +2,15 @@ import React, { Fragment, useEffect, useState } from "react";
 import callAPI from "../../common/callAPI";
 import Decide from "../Decide/Decide";
 import Friends from "../Friends/Friends";
+import Loading from "../Loading/Loading";
 
 const ChatRequests = ({ cookies }) => {
   let [friendReqs, setFriendReqs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchRequests = async () => {
+      setIsLoading(true)
       let apiResult = await callAPI(
         "https://capstone-chat-server.herokuapp.com/requests/recieved",
         {
@@ -16,6 +19,7 @@ const ChatRequests = ({ cookies }) => {
         "POST"
       );
       setFriendReqs(apiResult.requestRecieved);
+      setIsLoading(false)
     };
     fetchRequests();
   }, []);
@@ -34,6 +38,8 @@ const ChatRequests = ({ cookies }) => {
   }
 
   return (
+    <Fragment>
+      {isLoading && <Loading/>}
     <div className="user-list">
     {friendReqs.length ? 
       friendReqs.map((user, idx) => {
@@ -46,6 +52,7 @@ const ChatRequests = ({ cookies }) => {
         );
       }) : <div className="text-center m-5" >No Friend Requests</div>}
     </div>
+    </Fragment>
   );
 };
 

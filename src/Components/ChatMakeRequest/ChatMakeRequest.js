@@ -2,15 +2,18 @@ import React, { Fragment, useEffect, useState } from "react";
 import callAPI from "../../common/callAPI";
 import AddFriend from "../AddFriend/AddFriend";
 import Friends from "../Friends/Friends";
+import Loading from "../Loading/Loading";
 import "./ChatMakeRequest.css";
 
 const ChatMakeRequest = ({ cookies }) => {
   let [searchedFriend, setSearchedFriend] = useState([]);
   let [reqList, setReqList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchRequests = async () => {
+      setIsLoading(true);
       let apiResult = await callAPI(
         "https://capstone-chat-server.herokuapp.com/requests/",
         {
@@ -18,6 +21,7 @@ const ChatMakeRequest = ({ cookies }) => {
         },
         "POST"
       );
+      setIsLoading(false)
       setReqList(apiResult.requestSent);
     };
     fetchRequests();
@@ -25,6 +29,7 @@ const ChatMakeRequest = ({ cookies }) => {
 
   const fetchUser = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     let apiResult = await callAPI(
       "https://capstone-chat-server.herokuapp.com/users/search",
       {
@@ -33,10 +38,13 @@ const ChatMakeRequest = ({ cookies }) => {
       },
       "POST"
     );
+    setIsLoading(false)
     setSearchedFriend(apiResult.result);
   };
 
   return (
+    <Fragment>
+      {isLoading && <Loading/>}
     <div className="user-list">
       <form onSubmit={(e) => fetchUser(e)}>
         <div className="row m-3">
@@ -79,6 +87,7 @@ const ChatMakeRequest = ({ cookies }) => {
       }) : 
       <div className="text-center m-5" >No user found for search name</div>}
     </div>
+    </Fragment>
   );
 };
 

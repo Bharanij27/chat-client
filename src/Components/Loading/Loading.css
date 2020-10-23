@@ -1,6 +1,14 @@
-
 .loading {
     position: fixed !important;
     left: 45% !important;
     top: 45% !important;
+  }
+
+  .load-container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0px;
+    left: 0px;
   }

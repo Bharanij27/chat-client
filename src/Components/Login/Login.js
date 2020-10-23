@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import Loading from '../Loading/Loading';
 import { useHistory } from "react-router-dom";
 import callAPI from "../../common/callAPI";
 import Input from "../Input/Input";
 import LoginFooter from "./LoginFooter";
 
-const Login = ({ title, setIsLoading, setIsLogin }) => {
+const Login = ({ title, setIsLogin }) => {
   let formDetails = { email: "", pass: "" };
   const [formData, setFormData] = useState(formDetails);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onInputChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
@@ -23,24 +25,28 @@ const Login = ({ title, setIsLoading, setIsLogin }) => {
 
   const loginUser = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       let response = await callAPI("https://capstone-chat-server.herokuapp.com/", {
         ...formData,
       }, 'POST');
       if (response.status === 200) {
         setCookie("user", { token: response.token }, { path: "/" });
-        
+        setIsLoading(false);
         history.push("/chat");
       } else {
+        setIsLoading(false);
         alert(response.message);
       }
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
 
   return (
     <Fragment>
+      {isLoading && <Loading/>}
       <form className="form-signin" onSubmit={(e) => loginUser(e)}>
         <Input
           id="inputEmail"

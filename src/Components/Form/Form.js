@@ -9,7 +9,6 @@ import { useCookies } from "react-cookie";
 const Form = () => {
   const [isLogin, setIsLogin] = useState(true);
   const formText = isLogin ? 'Login' : 'SignUp';
-  const  [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
   const [cookies] = useCookies(['user']);
@@ -21,7 +20,6 @@ const Form = () => {
   })
 
   return (
-      isLoading ? <Loading/> :
       <div className="container form-bg">
         <div className="row">
             <div className="col-lg-10 col-xl-9 mx-auto">
@@ -33,8 +31,8 @@ const Form = () => {
                 <div className="card-body">
                     <h5 className="card-title text-center">{formText}</h5> {/* make-bold */}
                     {isLogin ? 
-                        <Login title={formText} setIsLoading={setIsLoading}  setIsLogin={setIsLogin}/> : 
-                        <SignUp title={formText} setIsLoading={setIsLoading}  setIsLogin={setIsLogin}/>}
+                        <Login title={formText}  setIsLogin={setIsLogin}/> : 
+                        <SignUp title={formText}  setIsLogin={setIsLogin}/>}
                 </div>
 
             </div>

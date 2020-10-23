@@ -8,6 +8,7 @@ import ChatMakeRequest from "../ChatMakeRequest/ChatMakeRequest";
 import ChatRequests from "../ChatRequests/ChatRequests";
 import ChatUsersBody from "../ChatUsersBody/ChatUsersBody";
 import io from "socket.io-client";
+import Loading from "../Loading/Loading";
 
 const ChatLeftPannel = () => {
   const [currentBody, setCurrentBody] = useState("User");
@@ -16,6 +17,7 @@ const ChatLeftPannel = () => {
   const [chatFriend, setFriends] = useState([]);
   const [updateBody, setUpdateBody] = useState('');
   const [cookies] = useCookies(["user"]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let socket = io("https://capstone-chat-server.herokuapp.com/");
@@ -33,10 +35,12 @@ const ChatLeftPannel = () => {
 
   useEffect(() => {
     const fetChData = async () => {
+      setIsLoading(true)
       let apiResult = await callAPI("https://capstone-chat-server.herokuapp.com/users/", {
         token: cookies.user.token,
       }, 'POST');
       setUserDetails(apiResult);
+      setIsLoading(false)
     };
 
     fetChData();
@@ -58,6 +62,7 @@ const ChatLeftPannel = () => {
 
   return (
     <Fragment>
+      {isLoading && <Loading/>}
       {currentBody !== null ? (
         <Fragment>
           <ChatHeader

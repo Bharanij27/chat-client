@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from "react";
 import callAPI from "../../common/callAPI";
 import Input from "../Input/Input";
+import Loading from "../Loading/Loading";
 import SignUpFooter from "./SignUpFooter";
 
-const SignUp = ({ title, setIsLoading, setIsLogin }) => {
+const SignUp = ({ title, setIsLogin }) => {
   let formDetails = { email: "", pass: "", phnum: "", uname: "", cpass: "" };
   const [formData, setFormData] = useState(formDetails);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onInputChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
@@ -21,18 +23,21 @@ const SignUp = ({ title, setIsLoading, setIsLogin }) => {
         ...formData,
       }, 'POST');
       if (response.status === 200) {
-        console.log(response);
         setIsLogin(true);
+        setIsLoading(false);
       } else {
+        setIsLoading(false);
         alert(response.message)
       }
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
 
   return (
     <Fragment>
+      {isLoading && <Loading/>}
       <form className="form-signin" onSubmit={(e) => createUser(e)}>
         <Input
           id="inputEmail"
