@@ -47,7 +47,6 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
       debugger
       if(sender === user.name || sendByMe) {
           setMessages([...recMesg]);
-          console.log('recieved message', recMesg);
           if(!sendByMe){
             let lastMessage = recMesg[recMesg.length - 1];
             socket.emit('updateLastMessage', {token: cookies.user.token, user: user.name, mesg : lastMessage})

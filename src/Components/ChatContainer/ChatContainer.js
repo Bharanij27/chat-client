@@ -28,7 +28,6 @@ const ChatLeftPannel = () => {
       }
     });
     socket.on("recieved common Message", ({ recMesg, sender, sendByMe }) => {
-      console.log('reieved', { recMesg, sender, sendByMe });
       setUpdateBody(Math.random().toString(36).substring(2, 8))
     });
   }, []);
@@ -50,7 +49,6 @@ const ChatLeftPannel = () => {
     if (userDetails.friends) {
       let users = userDetails.friends.filter((friend) => friend.lastMessage !== null);
       users.sort((a, b) => b.lastMesgTime - a.lastMesgTime);
-      console.log(users);
       setFriends(users);
     }
   }, [userDetails, currentBody,]);
