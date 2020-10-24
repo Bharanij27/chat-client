@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ChatBoxFooter.css";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+style chanimport sendButton from '../../send.png'
 
 const ChatBoxFooter = ({ setChatheight, sendMessage }) => {
   const [value, setValue] = useState("");
@@ -45,6 +46,9 @@ const ChatBoxFooter = ({ setChatheight, sendMessage }) => {
           onChange={(e) => handleChange(e)}
           placeholder="Type a message then hit ENTER"
         />
+        <button type="submit">
+        <img src={sendButton} alt="send"/>
+        </button>
       </form>
     </div>
   );

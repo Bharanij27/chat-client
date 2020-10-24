@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center;
     height: 55px;
-    border-top: 2px solid #d3d3d3
+    background: lightgrey;
+    border-top: 1px solid #6c757d82
 }
 
 .chat-footer input {
@@ -29,4 +30,18 @@
 
 .emoji-mart-bar{
     display: none !important;
+}
+
+.chat-footer form img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transform: rotate(-90deg)
+}
+
+.chat-footer form button{
+    background-color: transparent !important;
+    border: none;
+    width: fit-content;
+    padding: 0px;
 }
