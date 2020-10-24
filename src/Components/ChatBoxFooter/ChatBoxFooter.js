@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ChatBoxFooter.css";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
-style chanimport sendButton from '../../send.png'
+import sendButton from '../../send.png'
 
 const ChatBoxFooter = ({ setChatheight, sendMessage }) => {
   const [value, setValue] = useState("");
