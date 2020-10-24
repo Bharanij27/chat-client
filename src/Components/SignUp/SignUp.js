@@ -28,7 +28,7 @@ const SignUp = ({ title, setIsLogin }) => {
       alert('Enter valid phone number')
     }
     try {
-      let response = await callAPI("http://localhost:3030/newUser", {
+      let response = await callAPI("https://capstone-chat-server.herokuapp.com/newUser", {
         ...formData,
       }, 'POST');
       if (response.status === 200) {

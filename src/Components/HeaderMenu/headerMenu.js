@@ -9,7 +9,7 @@ import io from "socket.io-client";
 const HeaderMenu = ({ setCurrentBody }) => {
     const history = useHistory();
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-    let socket = io("http://localhost:3030/");
+    let socket = io("https://capstone-chat-server.herokuapp.com/");
     
     useEffect(()=>{
     socket.emit("join", {token: cookies.user.token}, (error) => {

@@ -5,7 +5,7 @@ const AddFriend = ({ requestSent, setReqList, reqList, user, cookies }) => {
 
   const addUser = async () => {
     let apiResult = await callAPI(
-      "http://localhost:3030/requests/addRequest",
+      "https://capstone-chat-server.herokuapp.com/requests/addRequest",
       {
         token: cookies.user.token,
         friend: user.name,

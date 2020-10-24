@@ -15,7 +15,7 @@ const ChatMakeRequest = ({ cookies }) => {
     const fetchRequests = async () => {
       setIsLoading(true);
       let apiResult = await callAPI(
-        "http://localhost:3030/requests/",
+        "https://capstone-chat-server.herokuapp.com/requests/",
         {
           token: cookies.user.token,
         },
@@ -31,7 +31,7 @@ const ChatMakeRequest = ({ cookies }) => {
     e.preventDefault();
     setIsLoading(true)
     let apiResult = await callAPI(
-      "http://localhost:3030/users/search",
+      "https://capstone-chat-server.herokuapp.com/users/search",
       {
         token: cookies.user.token,
         searchString: searchText,
