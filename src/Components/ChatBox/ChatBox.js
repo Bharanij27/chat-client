@@ -18,11 +18,15 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
     const fetchData = async () => {
       // setIsLoading(true)
       let apiResult = await callAPI(
-        "https://capstone-chat-server.herokuapp.com/messages",
+        "http://localhost:3030/messages",
         { token: cookies.user.token, friend: user.name },
         "POST"
       );
-      setMessages(apiResult.messages);
+      let chatMessages = apiResult.messages.filter(message => 
+          message.available.length === 2 || !message.available.includes(user.name) && message.available.length === 1
+      );
+      
+      setMessages(chatMessages);
       // setIsLoading(false)
     };
 
@@ -30,7 +34,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
   }, []);
 
   useEffect(() => {
-    socket = io("https://capstone-chat-server.herokuapp.com/");
+    socket = io("http://localhost:3030/");
 
     socket.emit("join", {token: cookies.user.token, friend: user.name}, (error) => {
       if (error) {
@@ -62,6 +66,28 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
     }
   };
 
+  const deleteMessage = async (index) => {
+    let changeLast = '';
+    if(index === messages.length - 1){
+      changeLast = messages[messages.length - 2];
+    }
+    let apiCall = await callAPI(
+      "http://localhost:3030/delete",
+        { token: cookies.user.token, friend: user.name, message : messages[index], changeLast },
+        "POST"
+      );
+    if(apiCall.status === 200){
+      let chatMessages = [...messages]
+      chatMessages.splice(index, 1);
+      setMessages(chatMessages);
+    }
+
+  }
+
+  useEffect(()=>{
+    console.log(messages);
+  }, [messages])
+
   return (
     <Fragment>
       {/* {isLoading && <Loading/>} */}
@@ -72,7 +98,7 @@ const ChatBox = ({ user, setCurrentBody, cookies }) => {
             cookies={cookies}
             messages={messages}
             chatheight={chatheight}
-            setMessages = {setMessages}
+            deleteMessage = {deleteMessage}
           />
         <ChatBoxFooter
           setChatheight={setChatheight}

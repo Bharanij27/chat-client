@@ -12,7 +12,7 @@ const ChatRequests = ({ cookies }) => {
     const fetchRequests = async () => {
       setIsLoading(true)
       let apiResult = await callAPI(
-        "https://capstone-chat-server.herokuapp.com/requests/recieved",
+        "http://localhost:3030/requests/recieved",
         {
           token: cookies.user.token,
         },
@@ -27,7 +27,7 @@ const ChatRequests = ({ cookies }) => {
   const decision = async(decisionMade, user)=>{
       setFriendReqs(friendReqs.filter(friend => friend !== user));
       await callAPI(
-        "https://capstone-chat-server.herokuapp.com/requests/decision",
+        "http://localhost:3030/requests/decision",
         {
           token: cookies.user.token,
           friend : user,

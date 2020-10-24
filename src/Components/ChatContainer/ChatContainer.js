@@ -20,7 +20,7 @@ const ChatLeftPannel = () => {
   // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let socket = io("https://capstone-chat-server.herokuapp.com/");
+    let socket = io("http://localhost:3030/");
 
     socket.emit("join common", {token: cookies.user.token}, (error) => {
       if (error) {
@@ -35,7 +35,7 @@ const ChatLeftPannel = () => {
   useEffect(() => {
     const fetChData = async () => {
       // setIsLoading(true)
-      let apiResult = await callAPI("https://capstone-chat-server.herokuapp.com/users/", {
+      let apiResult = await callAPI("http://localhost:3030/users/", {
         token: cookies.user.token,
       }, 'POST');
       setUserDetails(apiResult);
