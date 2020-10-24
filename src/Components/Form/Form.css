@@ -130,3 +130,9 @@ body {
   .cursor{
       cursor: pointer;
   }
+
+  @media (min-width: 200px) and (max-width: 767px)  { 
+    .card.card-signin.flex-row.ml-5.mr-5.mt-3.mb-3{
+      margin: 10px !important;
+    }
+ }

@@ -24,7 +24,7 @@ const Form = () => {
         <div className="row">
             <div className="col-lg-10 col-xl-9 mx-auto">
                 
-                <div className={"card card-signin flex-row m-5"}>
+                <div className="card card-signin flex-row ml-5 mr-5 mt-3 mb-3">
                     <div className={formText + " card-img-left m-1 d-none d-md-flex"}>
                 </div>
                 
